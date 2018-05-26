@@ -825,8 +825,10 @@ class ToolingApi():
 
         * class_ids -- Apex Test Class Id List
         """
-        url = "/tooling/runTestsAsynchronous/?classids=" + ",".join(class_ids)
-        self.result = self.get(url)
+        data = {}
+        data["classids"] = ','.join(class_ids)
+        url = "/tooling/runTestsAsynchronous/"
+        self.result = self.post(url,data)
         return self.result
 
     def run_tests_synchronous(self, class_names):
@@ -836,8 +838,10 @@ class ToolingApi():
 
         * class_names -- Apex Test Class Name List
         """
-        url = "/tooling/runTestsSynchronous/?classnames=" + ",".join(class_names)
-        self.result = self.get(url)
+        data = {}
+        data["classNames"] = ','.join(class_names)
+        url = "/tooling/runTestsSynchronous/"
+        self.result = self.post(url,data)
         return self.result
 
     def run_test(self, class_id):
