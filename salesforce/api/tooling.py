@@ -840,8 +840,10 @@ class ToolingApi():
         """
         data = {}
         data["classNames"] = ','.join(class_names)
+        Printer.get("log").write('data : ' + class_names)
         url = "/tooling/runTestsSynchronous/"
         self.result = self.post(url,data)
+        Printer.get("log").write('result : ' + self.result)
         return self.result
 
     def run_test(self, class_id):
